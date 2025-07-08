@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ShoppingItem {
   img: string;
@@ -34,20 +35,23 @@ const ShoppingSection: React.FC = () => {
     <div className="w-100" style={{ backgroundColor: '#F7F7F7' }}>
       <section className="py-5 px-3 px-md-5">
         <h5 className="fw-bold mb-4 text-black">
-          <span className="border-start border-4 border-primary pe-2 me-2 "></span>
+          <span className="border-start border-4 border-primary pe-2 me-2"></span>
           Shopping
         </h5>
         <div className="row g-4">
           {shoppingItems.map((item, index) => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={index}>
               <Link href={`/shopping/${index}`} className="text-decoration-none">
-                <div className="h-100 cursor-pointer">
+                <div className="h-100">
                   <div className="position-relative mb-2 overflow-hidden" style={{ height: '230px' }}>
-                    <img
+                    <Image
                       src={item.img}
                       alt={`Shopping ${index + 1}`}
-                      className="w-100 h-100 object-fit-cover"
-                      style={{ cursor: 'pointer' }}
+                      fill
+                      className="object-fit-cover"
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      unoptimized
+                      style={{ objectFit: 'cover', cursor: 'pointer' }}
                     />
                     {item.badge && (
                       <span className="position-absolute bottom-0 start-0 bg-dark text-white px-2 py-1 small">

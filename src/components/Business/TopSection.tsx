@@ -59,37 +59,33 @@ const TopSection: React.FC = () => {
         {/* Header */}
         <div className="mb-5 text-center">
           <div className="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-            <span className="badge bg-dark px-3 py-2">Local</span>
-            <span className="badge bg-dark px-3 py-2">National</span>
-            <span className="badge bg-dark px-3 py-2">Top Workplaces</span>
-            <span className="badge bg-dark px-3 py-2">Submit a Tip</span>
+            {["Local", "National", "Top Workplaces", "Submit a Tip"].map((tag) => (
+              <span key={tag} className="badge bg-dark px-3 py-2">
+                {tag}
+              </span>
+            ))}
           </div>
-         <h3
-  className="fw-bold display-6"
-  style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" }}
->
-  ST. LOUIS BUSINESS NEWS
-</h3>
-
+          <h3
+            className="fw-bold display-6"
+            style={{
+              fontFamily:
+                "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+            }}
+          >
+            ST. LOUIS BUSINESS NEWS
+          </h3>
         </div>
 
         <div className="row gx-4 gy-4">
           {/* Featured News */}
           <div className="col-md-5">
-            <div
-  className="overflow-hidden mb-3"
-  style={{
-    height: "350px",           // Increased height
-    marginLeft: "0px",         // Remove or decrease left margin
-  }}
->
-  <img
-    src={featured.img}
-    alt="Featured News"
-    className="w-100 h-100 object-fit-cover "
-  />
-</div>
-
+            <div className="overflow-hidden mb-3" style={{ height: "350px" }}>
+              <img
+                src={featured.img}
+                alt="Featured News"
+                className="w-100 h-100 object-fit-cover rounded"
+              />
+            </div>
             <h4
               className="fw-bold"
               style={{
@@ -129,24 +125,24 @@ const TopSection: React.FC = () => {
                   </div>
                   <h6
                     style={{
-                      fontSize: "1.2rem",
+                      fontSize: "1.1rem",
                       fontFamily: "Times New Roman, serif",
                       fontWeight: 700,
-                      lineHeight: "1",
+                      lineHeight: "1.2",
                     }}
                   >
                     {item.title}
                   </h6>
                   <p
-              className="text-muted"
-              style={{
-                fontSize: "1rem",
-                fontFamily: "Times New Roman, serif",
-                fontWeight: 500,
-              }}
-            >
-              {item.author}
-            </p>
+                    className="text-muted mb-0"
+                    style={{
+                      fontSize: "0.95rem",
+                      fontFamily: "Times New Roman, serif",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {item.author}
+                  </p>
                 </div>
               ))}
             </div>

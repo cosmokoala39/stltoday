@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const EditorsPick = () => {
@@ -8,17 +9,17 @@ const EditorsPick = () => {
     <div
       style={{
         backgroundColor: "#ffffff",
-        minHeight: "90vh", 
-        width: "100vw",     
+        minHeight: "90vh",
+        width: "100vw",
         padding: "60px 0",
         overflow: "hidden",
       }}
     >
       <div className="container-fluid px-5">
         <div
-          className="border p-5 mx-auto "
+          className="border p-5 mx-auto"
           style={{
-            maxWidth: "1400px", // larger for wide screens
+            maxWidth: "1400px",
             fontFamily: "Times New Roman, Times, serif",
             backgroundColor: "#ffffff",
             borderRadius: "12px",
@@ -28,23 +29,23 @@ const EditorsPick = () => {
           {/* Section Heading */}
           <h3 className="mb-5 text-black fw-bold">
             <span className="text-primary border-start border-4 ps-2 me-2">|</span>
-            Editor's Pick
+            Editor&apos;s Pick
           </h3>
 
           {/* Image + Content Row */}
           <div className="row h-100">
             {/* Left: Image */}
             <div className="col-md-6 mb-4 mb-md-0">
-              <img
-                src="https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/8/14/8148675b-1422-5be4-838a-2c3557e94093/683da8d4a03ee.preview.jpg?crop=1830%2C1029%2C0%2C51&resize=400%2C225&order=crop%2Cresize"
-                alt="Editor's Pick"
-                className="img-fluid w-100 h-100"
-                style={{
-                  objectFit: "cover",
-                  borderRadius: "10px",
-                  minHeight: "350px",
-                }}
-              />
+              <div style={{ position: "relative", width: "100%", height: "350px" }}>
+                <Image
+                  src="https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/8/14/8148675b-1422-5be4-838a-2c3557e94093/683da8d4a03ee.preview.jpg?crop=1830%2C1029%2C0%2C51&resize=400%2C225&order=crop%2Cresize"
+                  alt="Editor's Pick"
+                  fill
+                  style={{ objectFit: "cover", borderRadius: "10px" }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              </div>
             </div>
 
             {/* Right: Text content */}

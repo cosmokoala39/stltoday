@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 
 interface Article {
   img: string;
@@ -34,19 +33,17 @@ const Shopping = () => {
       <div className="row">
         {articles.map((article, index) => (
           <div key={index} className="col-12 col-sm-6 col-md-3 mb-4">
-            <Link href={`/article/${index}`} className="text-decoration-none">
-              <div className="card h-100">
-                <img
-                  src={article.img}
-                  alt={article.title}
-                  className="card-img-top"
-                  style={{ height: '200px', objectFit: 'cover' }}
-                />
-                <div className="card-body">
-                  <h6 className="card-title text-dark">{article.title}</h6>
-                </div>
+            <div className="card h-100">
+              <img
+                src={article.img}
+                alt={article.title}
+                className="card-img-top"
+                style={{ height: '200px', objectFit: 'cover' }}
+              />
+              <div className="card-body">
+                <h6 className="card-title text-dark">{article.title}</h6>
               </div>
-            </Link>
+            </div>
           </div>
         ))}
       </div>
