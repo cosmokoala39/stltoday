@@ -28,7 +28,6 @@ const articles: Article[] = [
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/9/e9/9e92653a-a3d6-5257-bcf8-0a1a656547ba/68658c7054aa8.image.jpg?crop=1763%2C992%2C0%2C91&resize=540%2C304&order=crop%2Cresize",
     title:
       "Photos: Mermaids on the Mississippi make a Splash at the St. Louis Aquarium",
-   
   },
 ];
 
@@ -44,21 +43,61 @@ const Life = () => {
             fontFamily: "Times New Roman, Times, serif",
           }}
         >
-          Life & Entertaiment
+          Life & Entertainment
         </h5>
 
-        {/* Card Grid - removed justify-content-center */}
-        <div className="row gx-4 gy-4">
+        {/* Mobile Horizontal Scroll */}
+        <div className="d-block d-md-none overflow-auto">
+          <div className="d-flex flex-nowrap gap-3">
+            {articles.map((article, index) => (
+              <div
+                key={index}
+                className="card border-0"
+                style={{
+                  minWidth: "280px",
+                  fontFamily: "Times New Roman, Times, serif",
+                }}
+              >
+                <div style={{ position: "relative", height: "200px" }}>
+                  <img
+                    src={article.img}
+                    className="card-img-top"
+                    alt={article.title}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </div>
+                <div className="card-body px-2 pt-3">
+                  <p
+                    className="card-text mb-0 text-dark"
+                    style={{
+                      fontSize: "1.2rem",
+                      lineHeight: "1.3rem",
+                      fontWeight: 1000,
+                    }}
+                  >
+                    {article.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid View */}
+        <div className="row gx-4 gy-4 d-none d-md-flex">
           {articles.map((article, index) => (
-            <div key={index} className="col-12 col-sm-6 col-md-3">
+            <div key={index} className="col-md-3">
               <div
                 className="card border-0 h-100"
                 style={{
                   fontFamily: "Times New Roman, Times, serif",
-                  fontSize: "0.9rem",
                 }}
               >
-                {/* Image Container */}
                 <div style={{ position: "relative", height: "220px" }}>
                   <img
                     src={article.img}
@@ -72,8 +111,6 @@ const Life = () => {
                     }}
                   />
                 </div>
-
-                {/* Text Content */}
                 <div className="card-body px-2 pt-3">
                   <p
                     className="card-text mb-0 text-dark"

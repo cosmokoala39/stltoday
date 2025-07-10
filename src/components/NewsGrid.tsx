@@ -53,7 +53,11 @@ const NewsGrid = () => {
   ];
 
   return (
-    <div className="container-fluid bg-black text-light py-5 px-4">
+   <div
+  className="container-fluid text-light py-5 px-3 px-lg-4"
+  style={{ backgroundColor: "#010922" }}
+>
+
       <div className="row g-4">
         {/* Featured Article */}
         <div
@@ -65,13 +69,17 @@ const NewsGrid = () => {
           <img
             src={featuredArticle.img}
             alt="Featured"
-            className="img-fluid w-100"
-            style={{ height: "450px", objectFit: "cover" }}
+            className="img-fluid w-100 "
+            style={{
+              height: "auto",
+              aspectRatio: "16/9",
+              objectFit: "cover",
+            }}
           />
           <h2
             className="mt-3 fw-bold"
             style={{
-              fontSize: "1.75rem",
+              fontSize: "1.95rem",
               fontFamily: "Times New Roman, Times",
               color: isFeaturedHovered ? "#b0b0b0" : "#ffffff",
             }}
@@ -94,7 +102,7 @@ const NewsGrid = () => {
           <div className="row g-3">
             {sideArticles.map((article, index) => (
               <div
-                className="col-md-4"
+                className="col-6 col-md-4"
                 key={index}
                 style={{ cursor: "pointer" }}
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -104,8 +112,13 @@ const NewsGrid = () => {
                   <img
                     src={article.img}
                     alt={`news-${index}`}
-                    className="img-fluid mb-2"
-                    style={{ height: "110px", objectFit: "cover", width: "100%" }}
+                    className="img-fluid mb-2 "
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      aspectRatio: "16/9",
+                      objectFit: "cover",
+                    }}
                   />
                   <h5
                     className="fw-semibold"

@@ -12,7 +12,7 @@ interface Article {
 const articles: Article[] = [
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/0/a5/0a50d0d3-cd96-416e-b96f-04690386f94d/6866ed8ab2e8c.preview.jpg?crop=875%2C492%2C0%2C112",
-    title:" Maryland Heights drug maker Sentio to expand, add jobs",
+    title: "Maryland Heights drug maker Sentio to expand, add jobs",
   },
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/4/12/4121c66d-8ee7-4dbd-b5c0-0afa71b636cf/6865b4956f628.preview.jpg?crop=1763%2C992%2C0%2C91&resize=990%2C557&order=crop%2Cresize",
@@ -23,9 +23,8 @@ const articles: Article[] = [
     title: "Centene stock tumbles after Clayton company scraps 2025 forecast",
   },
   {
-     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/f/33/f339f039-3510-57c2-8516-598a9d4d66fa/681ba7e529ec3.image.jpg?crop=1763%2C992%2C0%2C91&resize=990%2C557&order=crop%2Cresize",
+    img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/f/33/f339f039-3510-57c2-8516-598a9d4d66fa/681ba7e529ec3.image.jpg?crop=1763%2C992%2C0%2C91&resize=990%2C557&order=crop%2Cresize",
     title: "McBride Homes, Chesterfield contractor reach settlement over deed claims",
-   
   },
 ];
 
@@ -41,13 +40,56 @@ const Business = () => {
             fontFamily: "Times New Roman, Times, serif",
           }}
         >
-          Business 
+          Business
         </h5>
 
-        {/* Card Grid  */}
-        <div className="row gx-4 gy-4">
+        {/* Scrollable Card Row on Mobile, Grid on Desktop */}
+        <div className="d-block d-md-none overflow-auto">
+          <div className="d-flex flex-nowrap gap-3 px-2">
+            {articles.map((article, index) => (
+              <div
+                key={index}
+                className="card border-0"
+                style={{
+                  minWidth: "280px",
+                  fontFamily: "Times New Roman, Times, serif",
+                  fontSize: "0.9rem",
+                }}
+              >
+                <div style={{ position: "relative", height: "180px" }}>
+                  <img
+                    src={article.img}
+                    className="card-img-top"
+                    alt={article.title}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </div>
+                <div className="card-body px-2 pt-3">
+                  <p
+                    className="card-text mb-0 text-dark"
+                    style={{
+                      fontSize: "1.1rem",
+                      lineHeight: "1.3rem",
+                      fontWeight: 1000,
+                    }}
+                  >
+                    {article.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Grid View for Desktop */}
+        <div className="row gx-4 gy-4 d-none d-md-flex">
           {articles.map((article, index) => (
-            <div key={index} className="col-12 col-sm-6 col-md-3">
+            <div key={index} className="col-md-3">
               <div
                 className="card border-0 h-100"
                 style={{
@@ -55,7 +97,6 @@ const Business = () => {
                   fontSize: "0.9rem",
                 }}
               >
-                {/* Image Container */}
                 <div style={{ position: "relative", height: "220px" }}>
                   <img
                     src={article.img}
@@ -69,8 +110,6 @@ const Business = () => {
                     }}
                   />
                 </div>
-
-                {/* Text Content */}
                 <div className="card-body px-2 pt-3">
                   <p
                     className="card-text mb-0 text-dark"
@@ -87,6 +126,7 @@ const Business = () => {
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 interface NewsItem {
@@ -44,14 +44,11 @@ const news: NewsItem[] = [
 ];
 
 const LatestNews = () => {
-  const [hovering, setHovering] = useState(false);
-
   return (
     <div
-      className="container-fluid py-5 bg-black"
+      className="container-fluid py-5"
       style={{
-        backgroundColor: hovering ? "#0c141f" : "#060b12",
-        transition: "background-color 0.3s ease",
+        backgroundColor: "#000", // always black
       }}
     >
       <div className="mx-auto px-3" style={{ maxWidth: "1500px" }}>
@@ -68,55 +65,31 @@ const LatestNews = () => {
           <em style={{ fontWeight: 600 }}>Latest</em>
         </h6>
 
-        <div className="row g-4 justify-content-center">
+        {/* Desktop view: Grid */}
+        <div className="d-none d-md-flex row g-4">
+          {news.map((item, index) => (
+            <div key={index} className="col-md-6 col-lg-3">
+              <NewsCard item={item} />
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile view: Horizontal scroll */}
+        <div
+          className="d-flex d-md-none overflow-auto"
+          style={{
+            gap: "1rem",
+            scrollSnapType: "x mandatory",
+            paddingBottom: "0.5rem",
+          }}
+        >
           {news.map((item, index) => (
             <div
               key={index}
-              className="col-12 col-sm-6 col-md-4 col-lg-3"
-              onMouseEnter={() => setHovering(true)}
-              onMouseLeave={() => setHovering(false)}
+              className="flex-shrink-0"
+              style={{ width: "250px", scrollSnapAlign: "start" }}
             >
-              <div
-                className="card border-0 text-white h-100 shadow"
-                style={{
-                  backgroundColor: "black",
-                  fontFamily: "Times New Roman, Times, serif",
-                  transition: "transform 0.2s ease",
-                }}
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="card-img-top"
-                  style={{
-                    height: "200px",
-                    objectFit: "cover",
-                    cursor: "pointer",
-                   
-                  }}
-                />
-                <div className="card-body px-3 py-3">
-                  <p
-                    className="card-text fw-bold mb-0"
-                    style={{
-                      fontSize: "1.1rem",
-                      color: "white",
-                      cursor: "pointer",
-                      lineHeight: "1.4rem",
-                      minHeight: "60px",
-                      userSelect: "none",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "lightgray";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "white";
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                </div>
-              </div>
+              <NewsCard item={item} />
             </div>
           ))}
         </div>
@@ -124,5 +97,49 @@ const LatestNews = () => {
     </div>
   );
 };
+
+// 🧩 Reusable News Card Component
+const NewsCard = ({ item }: { item: NewsItem }) => (
+  <div
+    className="card border-0 text-white h-100 shadow"
+    style={{
+      backgroundColor: "black",
+      fontFamily: "Times New Roman, Times, serif",
+      transition: "transform 0.2s ease",
+    }}
+  >
+    <img
+      src={item.img}
+      alt={item.title}
+      className="card-img-top"
+      style={{
+        height: "160px",
+        objectFit: "cover",
+        cursor: "pointer",
+      }}
+    />
+    <div className="card-body px-3 py-3">
+      <p
+        className="card-text fw-bold mb-0"
+        style={{
+          fontSize: "1rem",
+          color: "white",
+          cursor: "pointer",
+          lineHeight: "1.3rem",
+          minHeight: "50px",
+          userSelect: "none",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = "lightgray";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = "white";
+        }}
+      >
+        {item.title}
+      </p>
+    </div>
+  </div>
+);
 
 export default LatestNews;

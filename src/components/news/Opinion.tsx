@@ -22,13 +22,13 @@ const articles: Article[] = [
   },
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/c/b8/cb8441a8-dcab-456a-b296-bd6f783209b5/685adc6a246ef.image.jpg?crop=1762%2C991%2C0%2C92&resize=540%2C304&order=crop%2Cresize",
-    title: "Lynn Schmidt: Immigrants can embody American values that our policies don't",
+    title:
+      "Lynn Schmidt: Immigrants can embody American values that our policies don't",
   },
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/8/42/842fe741-d1cd-4513-81fa-0f14307be144/686592982daae.preview.jpg?crop=1763%2C992%2C0%2C91&resize=540%2C304&order=crop%2Cresize",
     title:
       "Letter: Missouri politicians continue trying to roll back women's rights",
-   
   },
 ];
 
@@ -44,22 +44,23 @@ const Opinion = () => {
             fontFamily: "Times New Roman, Times, serif",
           }}
         >
-          Opinion 
+          Opinion
         </h5>
 
-        {/* Card Grid - removed justify-content-center */}
-        <div className="row gx-4 gy-4">
-          {articles.map((article, index) => (
-            <div key={index} className="col-12 col-sm-6 col-md-3">
+        {/* Mobile: Horizontal Scroll */}
+        <div className="d-block d-md-none overflow-auto">
+          <div className="d-flex flex-nowrap gap-3">
+            {articles.map((article, index) => (
               <div
-                className="card border-0 h-100"
+                key={index}
+                className="card border-0"
                 style={{
+                  minWidth: "250px",
+                  maxWidth: "250px",
                   fontFamily: "Times New Roman, Times, serif",
-                  fontSize: "0.9rem",
                 }}
               >
-                {/* Image Container */}
-                <div style={{ position: "relative", height: "220px" }}>
+                <div style={{ position: "relative", height: "180px" }}>
                   <img
                     src={article.img}
                     className="card-img-top"
@@ -72,13 +73,11 @@ const Opinion = () => {
                     }}
                   />
                 </div>
-
-                {/* Text Content */}
                 <div className="card-body px-2 pt-3">
                   <p
-                    className="card-text mb-0 text-dark"
+                    className="card-text text-dark mb-0"
                     style={{
-                      fontSize: "1.2rem",
+                      fontSize: "1.1rem",
                       lineHeight: "1.3rem",
                       fontWeight: 1000,
                     }}
@@ -87,8 +86,51 @@ const Opinion = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: 4-column Grid */}
+        <div className="d-none d-md-block">
+          <div className="row gx-4 gy-4">
+            {articles.map((article, index) => (
+              <div key={index} className="col-12 col-sm-6 col-md-3">
+                <div
+                  className="card border-0 h-100"
+                  style={{
+                    fontFamily: "Times New Roman, Times, serif",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  <div style={{ position: "relative", height: "220px" }}>
+                    <img
+                      src={article.img}
+                      className="card-img-top"
+                      alt={article.title}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                    />
+                  </div>
+                  <div className="card-body px-2 pt-3">
+                    <p
+                      className="card-text mb-0 text-dark"
+                      style={{
+                        fontSize: "1.2rem",
+                        lineHeight: "1.3rem",
+                        fontWeight: 1000,
+                      }}
+                    >
+                      {article.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

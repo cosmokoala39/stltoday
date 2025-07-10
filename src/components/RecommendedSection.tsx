@@ -32,7 +32,7 @@ const articles: Article[] = [
 const RecommendedSection = () => {
   return (
     <div className="container-fluid bg-white p-0 m-0">
-      <div className="bg-white p-4 m-0">
+      <div className="bg-white py-4 m-0">
         {/* Banner */}
         <div
           className="d-flex align-items-center text-white p-3 mb-4 mx-auto"
@@ -73,34 +73,29 @@ const RecommendedSection = () => {
         </div>
 
         {/* Section Heading */}
-        <h6 className="mb-3" style={{ marginLeft: "10px" }}>
+        <h6 className="mb-3 ps-3">
           <span className="text-black border-start border-4 ps-3 me-2">
             Recommended
           </span>
           <em className="text-primary">For You</em>
         </h6>
 
-        {/* Card Grid */}
-        <div className="d-flex flex-wrap justify-content-center gap-3 px-3">
+        {/* Responsive Grid */}
+        <div className="row g-0">
           {articles.map((article, index) => (
             <div
               key={index}
-              className="card border-0 flex-grow-1"
-              style={{
-                fontSize: "1rem",
-                minWidth: "220px",
-                maxWidth: "260px",
-                fontFamily: "Times New Roman, Times, serif",
-              }}
+              className="col-12 col-sm-6 col-md-6 col-lg-3"
             >
-              <div style={{ position: "relative", cursor: "pointer" }}>
+              <div className="card border-0 rounded-0">
                 <img
                   src={article.img}
-                  className="card-img-top"
+                  className="w-100"
                   alt={article.title}
                   style={{
-                    height: "180px",
+                    height: "200px",
                     objectFit: "cover",
+                    borderRadius: "0",
                   }}
                 />
                 {article.description === "Sponsored" && (
@@ -116,25 +111,25 @@ const RecommendedSection = () => {
                     Sponsored
                   </span>
                 )}
-              </div>
-
-              <div className="card-body p-2">
-                <p
-                  className="card-text mb-1"
-                  style={{
-                    fontWeight: 700,
-                    fontSize: "1rem",
-                    cursor: "pointer",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#0d6efd")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "black")
-                  }
-                >
-                  {article.title}
-                </p>
+                <div className="card-body p-2">
+                  <p
+                    className="card-text mb-1"
+                    style={{
+                      fontWeight: 700,
+                      fontSize: "1rem",
+                      fontFamily: "Times New Roman, Times, serif",
+                      cursor: "pointer",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "#0d6efd")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "black")
+                    }
+                  >
+                    {article.title}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

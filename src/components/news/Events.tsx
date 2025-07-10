@@ -12,8 +12,7 @@ interface Article {
 const articles: Article[] = [
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/d/a8/da896b5a-623b-45a5-add5-88bad372b05a/654bbfa03ce81.preview.png?resize=540%2C304",
-    title:
-      "Blues get younger on defense, fill big need up front: Net Front Presence",
+    title: "Blues get younger on defense, fill big need up front: Net Front Presence",
   },
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/a/be/abe3fcb8-1be7-48b1-8ed0-a5a270f79d2d/66314effb4ef7.preview.png?resize=540%2C304",
@@ -25,8 +24,7 @@ const articles: Article[] = [
   },
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/3/b0/3b014c84-5f42-4240-9282-cc993bb67b02/6568d0147c575.preview.png?resize=540%2C304",
-    title:
-      "Can Cubs-Cardinals rivalry still spark fireworks in time for Fourth of July series?",
+    title: "Can Cubs-Cardinals rivalry still spark fireworks in time for Fourth of July series?",
   },
 ];
 
@@ -46,8 +44,8 @@ const Events = () => {
         </h5>
       </div>
 
-      {/* Black Full-Width Section */}
-      <div style={{ backgroundColor: "black", width: "100%" }} className="py-4 px-5">
+      {/* Black Section */}
+      <div style={{ backgroundColor: "black", width: "100%" }} className="py-4 px-4">
         <h5
           className="text-white mb-4 fw-bold ps-2"
           style={{
@@ -58,15 +56,57 @@ const Events = () => {
           Listen Now Podcasts
         </h5>
 
-        <div className="row gx-4 gy-4">
+        {/* Mobile Scrollable Section */}
+        <div className="d-block d-md-none overflow-auto">
+          <div className="d-flex flex-nowrap gap-3">
+            {articles.map((article, index) => (
+              <div
+                key={index}
+                className="card border-0"
+                style={{
+                  minWidth: "280px",
+                  backgroundColor: "black",
+                  fontFamily: "Times New Roman, Times, serif",
+                }}
+              >
+                <div style={{ position: "relative", height: "180px" }}>
+                  <img
+                    src={article.img}
+                    alt={article.title}
+                    className="card-img-top"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+                <div className="card-body px-2 pt-3">
+                  <p
+                    className="card-text text-white mb-0"
+                    style={{
+                      fontSize: "1.1rem",
+                      lineHeight: "1.3rem",
+                      fontWeight: 1000,
+                    }}
+                  >
+                    {article.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="row gx-4 gy-4 d-none d-md-flex">
           {articles.map((article, index) => (
-            <div key={index} className="col-12 col-sm-6 col-md-3">
+            <div key={index} className="col-md-3">
               <div
                 className="card border-0 h-100"
                 style={{
-                  fontFamily: "Times New Roman, Times, serif",
-                  fontSize: "0.9rem",
                   backgroundColor: "black",
+                  fontFamily: "Times New Roman, Times, serif",
                 }}
               >
                 <div style={{ position: "relative", height: "200px" }}>
@@ -75,22 +115,19 @@ const Events = () => {
                     className="card-img-top"
                     alt={article.title}
                     style={{
-                      height: "100%",
                       width: "100%",
+                      height: "100%",
                       objectFit: "cover",
-                      
                     }}
                   />
                 </div>
-
                 <div className="card-body px-2 pt-3">
                   <p
-                    className="card-text mb-0 text-white"
+                    className="card-text text-white mb-0"
                     style={{
                       fontSize: "1.2rem",
                       lineHeight: "1.3rem",
                       fontWeight: 1000,
-                      backgroundColor: "black",
                     }}
                   >
                     {article.title}

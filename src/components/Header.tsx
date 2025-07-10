@@ -17,16 +17,16 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: "E-edition", href: "/" },
-    { label: "News", href: "/" },
-    { label: "Obits", href: "/" },
-    { label: "Sports", href: "/" },
-    { label: "Opinion", href: "/" },
-    { label: "Puzzles", href: "/" },
-    { label: "Podcasts", href: "/" },
-    { label: "Lifestyles", href: "/" },
+    { label: "E-edition", href: "/edition" },
+    { label: "News", href: "/News" },
+    { label: "Obits", href: "/Obits" },
+    { label: "Sports", href: "/Sports" },
+    { label: "Opinion", href: "/Opinion" },
+    { label: "Puzzles", href: "/Puzzles" },
+    { label: "Podcasts", href: "/Podcasts" },
+    { label: "Lifestyles", href: "/Life" },
     { label: "Business", href: "/business" },
-    { label: "STL Headliner", href: "/" },
+    { label: "STL Headliner", href: "/Headliner" },
   ];
 
   const toggleMenu = () => {

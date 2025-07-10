@@ -47,19 +47,20 @@ const Sports = () => {
           Sports
         </h5>
 
-        {/* Card Grid - removed justify-content-center */}
-        <div className="row gx-4 gy-4">
-          {articles.map((article, index) => (
-            <div key={index} className="col-12 col-sm-6 col-md-3">
+        {/* Mobile: Horizontal Scroll */}
+        <div className="d-block d-md-none overflow-auto">
+          <div className="d-flex flex-nowrap gap-3">
+            {articles.map((article, index) => (
               <div
-                className="card border-0 h-100"
+                key={index}
+                className="card border-0"
                 style={{
+                  minWidth: "250px",
+                  maxWidth: "250px",
                   fontFamily: "Times New Roman, Times, serif",
-                  fontSize: "0.9rem",
                 }}
               >
-                {/* Image Container */}
-                <div style={{ position: "relative", height: "220px" }}>
+                <div style={{ position: "relative", height: "180px" }}>
                   <img
                     src={article.img}
                     className="card-img-top"
@@ -72,13 +73,14 @@ const Sports = () => {
                     }}
                   />
                 </div>
-
-                {/* Text Content */}
                 <div className="card-body px-2 pt-3">
+                  {article.description && (
+                    <small className="text-muted">{article.description}</small>
+                  )}
                   <p
-                    className="card-text mb-0 text-dark"
+                    className="card-text text-dark mb-0"
                     style={{
-                      fontSize: "1.2rem",
+                      fontSize: "1.1rem",
                       lineHeight: "1.3rem",
                       fontWeight: 1000,
                     }}
@@ -87,8 +89,54 @@ const Sports = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: 4-column Grid */}
+        <div className="d-none d-md-block">
+          <div className="row gx-4 gy-4">
+            {articles.map((article, index) => (
+              <div key={index} className="col-12 col-sm-6 col-md-3">
+                <div
+                  className="card border-0 h-100"
+                  style={{
+                    fontFamily: "Times New Roman, Times, serif",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  <div style={{ position: "relative", height: "220px" }}>
+                    <img
+                      src={article.img}
+                      className="card-img-top"
+                      alt={article.title}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                    />
+                  </div>
+                  <div className="card-body px-2 pt-3">
+                    {article.description && (
+                      <small className="text-muted">{article.description}</small>
+                    )}
+                    <p
+                      className="card-text mb-0 text-dark"
+                      style={{
+                        fontSize: "1.2rem",
+                        lineHeight: "1.3rem",
+                        fontWeight: 1000,
+                      }}
+                    >
+                      {article.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -12,8 +12,7 @@ interface Article {
 const articles: Article[] = [
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/0/6c/06c15086-bbfd-58f2-99c7-8918d37a339c/68668199bbb43.preview.jpg?crop=1763%2C992%2C0%2C91&resize=540%2C304&order=crop%2Cresize",
-    title:
-      "Why Some Americans Are Turning to Financing for Basic Medical Needs",
+    title: "Why Some Americans Are Turning to Financing for Basic Medical Needs",
   },
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/b/01/b0184c28-1323-5595-a9bc-670df9f8c296/6863fe9da56ad.preview.png?crop=1440%2C810%2C0%2C315&resize=540%2C304&order=crop%2Cresize",
@@ -26,9 +25,7 @@ const articles: Article[] = [
   },
   {
     img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/0/8d/08dbf6d3-dfbf-52bb-8f02-0784795db1df/686295213f21e.preview.jpg?resize=540%2C304",
-    title:
-      "Understanding Market Factors That Drive the Value of Cryptocurrency",
-   
+    title: "Understanding Market Factors That Drive the Value of Cryptocurrency",
   },
 ];
 
@@ -44,22 +41,23 @@ const Partner = () => {
             fontFamily: "Times New Roman, Times, serif",
           }}
         >
-          Partner 
+          Partner
         </h5>
 
-        {/* Card Grid - removed justify-content-center */}
-        <div className="row gx-4 gy-4">
-          {articles.map((article, index) => (
-            <div key={index} className="col-12 col-sm-6 col-md-3">
+        {/* Mobile: Horizontal Scroll */}
+        <div className="d-block d-md-none overflow-auto">
+          <div className="d-flex flex-nowrap gap-3">
+            {articles.map((article, index) => (
               <div
-                className="card border-0 h-100"
+                key={index}
+                className="card border-0"
                 style={{
+                  minWidth: "250px",
+                  maxWidth: "250px",
                   fontFamily: "Times New Roman, Times, serif",
-                  fontSize: "0.9rem",
                 }}
               >
-                {/* Image Container */}
-                <div style={{ position: "relative", height: "220px" }}>
+                <div style={{ position: "relative", height: "180px" }}>
                   <img
                     src={article.img}
                     className="card-img-top"
@@ -72,13 +70,11 @@ const Partner = () => {
                     }}
                   />
                 </div>
-
-                {/* Text Content */}
                 <div className="card-body px-2 pt-3">
                   <p
-                    className="card-text mb-0 text-dark"
+                    className="card-text text-dark mb-0"
                     style={{
-                      fontSize: "1.2rem",
+                      fontSize: "1.1rem",
                       lineHeight: "1.3rem",
                       fontWeight: 1000,
                     }}
@@ -87,8 +83,51 @@ const Partner = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: 4-column Grid */}
+        <div className="d-none d-md-block">
+          <div className="row gx-4 gy-4">
+            {articles.map((article, index) => (
+              <div key={index} className="col-12 col-sm-6 col-md-3">
+                <div
+                  className="card border-0 h-100"
+                  style={{
+                    fontFamily: "Times New Roman, Times, serif",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  <div style={{ position: "relative", height: "220px" }}>
+                    <img
+                      src={article.img}
+                      className="card-img-top"
+                      alt={article.title}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                    />
+                  </div>
+                  <div className="card-body px-2 pt-3">
+                    <p
+                      className="card-text mb-0 text-dark"
+                      style={{
+                        fontSize: "1.2rem",
+                        lineHeight: "1.3rem",
+                        fontWeight: 1000,
+                      }}
+                    >
+                      {article.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

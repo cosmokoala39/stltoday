@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -10,14 +10,14 @@ const EditorsPick = () => {
       style={{
         backgroundColor: "#ffffff",
         minHeight: "90vh",
-        width: "100vw",
+        width: "100%",
         padding: "60px 0",
         overflow: "hidden",
       }}
     >
-      <div className="container-fluid px-5">
+      <div className="container-fluid px-3 px-md-5">
         <div
-          className="border p-5 mx-auto"
+          className="border p-3 p-md-5 mx-auto"
           style={{
             maxWidth: "1400px",
             fontFamily: "Times New Roman, Times, serif",
@@ -27,7 +27,7 @@ const EditorsPick = () => {
           }}
         >
           {/* Section Heading */}
-          <h3 className="mb-5 text-black fw-bold">
+          <h3 className="mb-4 text-black fw-bold">
             <span className="text-primary border-start border-4 ps-2 me-2">|</span>
             Editor&apos;s Pick
           </h3>
@@ -35,7 +35,7 @@ const EditorsPick = () => {
           {/* Image + Content Row */}
           <div className="row h-100">
             {/* Left: Image */}
-            <div className="col-md-6 mb-4 mb-md-0">
+            <div className="col-12 col-md-6 mb-4 mb-md-0">
               <div style={{ position: "relative", width: "100%", height: "350px" }}>
                 <Image
                   src="https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/8/14/8148675b-1422-5be4-838a-2c3557e94093/683da8d4a03ee.preview.jpg?crop=1830%2C1029%2C0%2C51&resize=400%2C225&order=crop%2Cresize"
@@ -49,11 +49,11 @@ const EditorsPick = () => {
             </div>
 
             {/* Right: Text content */}
-            <div className="col-md-6 d-flex flex-column justify-content-center ps-md-5">
+            <div className="col-12 col-md-6 d-flex flex-column justify-content-center ps-md-5">
               <h2
-                className="mb-4"
+                className="mb-3"
                 style={{
-                  fontSize: "2rem",
+                  fontSize: "1.75rem",
                   fontWeight: 900,
                   color: "#000",
                 }}
@@ -62,18 +62,18 @@ const EditorsPick = () => {
                 in the St. Louis area
               </h2>
 
-              <p style={{ fontSize: "1.15rem", color: "#333" }}>
+              <p style={{ fontSize: "1.05rem", color: "#333" }}>
                 Our guide to public St. Louis-area pools and water parks is
                 updated for 2025 with all the info on attractions, hours and more.
               </p>
 
               <ul
-                className="mb-0"
+                className="mb-0 mt-3"
                 style={{
                   fontSize: "1rem",
                   color: "#000",
                   fontWeight: 600,
-                  lineHeight: "1.8rem",
+                  lineHeight: "1.7rem",
                   paddingLeft: "1.2rem",
                 }}
               >

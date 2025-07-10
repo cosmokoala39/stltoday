@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 interface Article {
   img: string;
   title: string;
-  description?: string;
 }
 
 const articles: Article[] = [
@@ -38,19 +37,19 @@ const Video = () => {
             fontFamily: "Times New Roman, Times, serif",
           }}
         >
-          Latest <span className="text-primary" style={{fontFamily: "Times New Roman, Times, serif",}}>Video</span>
+          Latest{" "}
+          <span className="text-primary" style={{ fontFamily: "Times New Roman" }}>
+            Video
+          </span>
         </h5>
 
-        {/* Card Grid */}
-        <div className="row gx-4 gy-4">
+        {/* 🖥️ Desktop View */}
+        <div className="row gx-4 gy-4 d-none d-md-flex">
           {articles.map((article, index) => (
             <div key={index} className="col-12 col-sm-6 col-md-3">
               <div
                 className="card border-0 h-100"
-                style={{
-                  fontFamily: "Times New Roman, Times, serif",
-                  fontSize: "0.9rem",
-                }}
+                style={{ fontFamily: "Times New Roman", fontSize: "0.9rem" }}
               >
                 <div style={{ position: "relative", height: "220px" }}>
                   <img
@@ -80,6 +79,48 @@ const Video = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* 📱 Mobile View (Full Width Scroll) */}
+        <div className="d-block d-md-none overflow-auto">
+          <div className="d-flex flex-nowrap" style={{ gap: "1rem", paddingBottom: "0.5rem" }}>
+            {articles.map((article, index) => (
+              <div
+                key={index}
+                style={{
+                  minWidth: "100vw", // full screen width
+                  maxWidth: "100vw",
+                  fontFamily: "Times New Roman",
+                }}
+              >
+                <div className="card border-0 h-100">
+                  <img
+                    src={article.img}
+                    className="card-img-top"
+                    alt={article.title}
+                    style={{
+                      height: "180px",
+                      width: "100%",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                  <div className="card-body px-3 pt-2">
+                    <p
+                      className="card-text mb-0 text-dark"
+                      style={{
+                        fontSize: "1.1rem",
+                        fontWeight: 700,
+                        lineHeight: "1.4rem",
+                      }}
+                    >
+                      {article.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
