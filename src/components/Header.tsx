@@ -34,8 +34,10 @@ const Header = () => {
   return (
     <>
       {/* Header top section */}
-      <div className="header-none-2 px-3 center-align bg-black">
-        <div className="mt-3 d-lg-none">
+      <div className="d-flex px-3 justify-space-between bg-black">
+
+
+        <div className="mt-2 d-lg-none">
           <i
             className="bi bi-list fs-1 text-light header-display"
             style={{ cursor: "pointer" }}
@@ -45,15 +47,15 @@ const Header = () => {
 
         <div className="d-flex px-3 mt-2 gap-4 flex-wrap logo-anime">
           <Link
-            href="/"
+            href="/images/logo-headerr.webp"
             className="flip-container hhh"
             style={{ textDecoration: "none" }}
           >
             <div className={`flipper vertical ${flipped ? "flipped" : ""}`}>
               <div className="front">
                 <Image
-                  src="/images/"
-                  alt="St. Louis Post-Dispatch"
+                  src="/images/logo-headerr.webp"
+                  alt="St. Louis-Post-Dispatch"
                   width={800}
                   height={200}
                   style={{ width: "100%", height: "auto" }}
@@ -96,9 +98,10 @@ const Header = () => {
               />
             </div>
           </div>
+          
         </div>
 
-        <div className="mt-3 mt-md-0 ms-auto subscribe-none">
+        <div className="mt-2  ms-auto subscribe-none">
           <button
             className="btn d-flex flex-column justify-content-end align-items-center"
             style={{
@@ -124,6 +127,8 @@ const Header = () => {
             ></span>
           </button>
         </div>
+
+        
       </div>
 
       {/* Mobile Header Navigation (Logo + Button) */}
