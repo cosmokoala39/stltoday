@@ -140,7 +140,7 @@ export default async function CategoryPage({ params }: PageProps) {
           </div>
         </div>
       </section>
-      <RecommendedSection/>
+      
 
       {/* ✅ Middle Section */}
       {middleSectionNews?.length > 0 && (
@@ -171,13 +171,15 @@ export default async function CategoryPage({ params }: PageProps) {
         </div>
       )}
 
+      <RecommendedSection/>
+
       {/* ✅ Shopping Section */}
       {shopping?.length > 0 && (
         <div className="w-100" style={{ backgroundColor: "#F7F7F7" }}>
           <section className="py-5 px-3 px-md-5">
             <h5 className="fw-bold mb-4 text-black">
               <span className="border-start border-4 border-primary pe-2 me-2"></span>
-              Shopping
+              Latest
             </h5>
             <div className="row g-4">
               {shopping.map((item, index) => (

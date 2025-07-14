@@ -8,6 +8,8 @@ import React from 'react'
 
 
 
+
+
 function page() {
   return (
     <div>
@@ -16,6 +18,7 @@ function page() {
       <LatestNews category='politics'/>
       <EditorsPick category='technology'/>
       <News/>
+      
     </div>
   )
 }

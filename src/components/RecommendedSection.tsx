@@ -67,7 +67,7 @@ interface RecommendedSectionProps {
 }
 
 const RecommendedSection: React.FC<RecommendedSectionProps> = ({ category = 'health' }) => {
-  console.log("categoryyyyyyyyyyyyyyyyyyyy:",category)
+ 
   const categoryData = getDataByCategory(category);
   
   if (!categoryData) {

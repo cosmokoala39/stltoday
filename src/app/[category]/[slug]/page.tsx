@@ -11,8 +11,8 @@ import Technology from "@/data/categories/technology.json";
 import PoliticsData from "@/data/categories/politics.json";  
 import Science from "@/data/categories/science.json";
 
-
 import Link from 'next/link';
+import ClientDetail from '@/components/ClientDeatil';
 
 // Types
 type Article = {
@@ -21,12 +21,12 @@ type Article = {
   img: string;
   slug: string;
   author: string;
-  description:string;
-  shortdescription:string;
+  description: string;
+  shortdescription: string;
 };
 
 interface PageProps {
-  params: Promise< {
+  params: Promise<{
     category: string;
     slug: string;
   }>;
@@ -46,7 +46,7 @@ function extractArticles(data: Record<string, unknown>): Article[] {
         }
       });
     }
-  }); 
+  });
 
   // Add featured article if present
   const featured = data['featured'];
@@ -61,7 +61,6 @@ function extractArticles(data: Record<string, unknown>): Article[] {
   return articles;
 }
 
-
 // Helper to fetch data based on category
 function getDataByCategory(category: string): Record<string, unknown> | null {
   switch (category) {
@@ -75,17 +74,23 @@ function getDataByCategory(category: string): Record<string, unknown> | null {
   }
 }
 
-
 // Main detail page
 const ShoppingDetailPage = async ({ params }: PageProps) => {
+
   const data = getDataByCategory((await params).category);
   if (!data) return notFound();
-  
 
   const articles = extractArticles(data);
- const { category, slug } = await params;
-const article = articles.find((item) => item.slug === slug);
-  console.log("article:",article)
+  const {  slug } = await params;
+  const article = articles.find((item) => item.slug === slug);
+ 
+
+
+  if(slug=="doj-overreach-wanda-vazquez-case-crumbles-leaving-feds-empty-handed"){
+    return(
+      <ClientDetail/>
+    )
+  }
 
   if (!article) return notFound();
 
@@ -93,7 +98,7 @@ const article = articles.find((item) => item.slug === slug);
     <div className="w-100">
       {/* Hero Section */}
       <div className="bg-black text-white py-5" style={{ minHeight: '490px' }}>
-        <div className="container gg" >
+        <div className="container gg">
           <h1 className="hero-title mb-3">{article.title}</h1>
           <p className="mb-1"><small>PROVIDED CONTENT  SHOPPING</small></p>
           <p className="mt-4 d-flex align-items-center flex-wrap text-secondary small">
@@ -111,25 +116,36 @@ const article = articles.find((item) => item.slug === slug);
 
       {/* Main Article Section */}
       <div className="bg-white" style={{ paddingTop: '40px' }}>
-        <div className="container p-4 bg-white dd" >
+        <div className="container p-4 bg-white dd">
 
-        {/* Share Buttons with custom icons */}
-<div className="d-flex gap-2 mb-4">
-  {[
-    { alt: 'Facebook', src: '/icons/facebook.png' },
-    { alt: 'Twitter X', src: '/icons/x.png' },
-    { alt: 'Butterfly', src: '/icons/butterfly.png' },
-    { alt: 'Envelope', src: '/icons/envelope.png' },
-    { alt: 'Printer', src: '/icons/printer.png' },
-    { alt: 'Share', src: '/icons/share.png' },
-    { alt: 'Bookmark', src: '/icons/bookmark.png' }
-  ].map(({ alt, src }) => (
-    <button key={alt} className="btn btn-sm btn-outline-dark p-1">
-      <img src={src} alt={alt} style={{ width: 20, height: 20 }} />
-    </button>
-  ))}
-</div>
-
+          {/* ✅ Updated Share Buttons */}
+          <div className="d-flex gap-2 mb-4">
+            {[
+              { icon: 'bi-facebook', label: 'Facebook', bg: '#3b5998' },
+              { icon: 'bi-twitter-x', label: 'Twitter X', bg: '#1a1a1a' },
+              { icon: 'bi-bezier2', label: 'Butterfly', bg: '#1da1f2' },
+              { icon: 'bi-envelope-fill', label: 'Envelope', bg: '#7d7d7d' },
+              { icon: 'bi-printer', label: 'Printer', bg: '#95a5a6' },
+              { icon: 'bi-share-fill', label: 'Share', bg: '#2c3e50' },
+              { icon: 'bi-bookmark-fill', label: 'Bookmark', bg: '#e74c3c' },
+            ].map(({ icon, label, bg }) => (
+              <button
+                key={label}
+                className="btn btn-sm d-flex align-items-center justify-content-center"
+                style={{
+                  backgroundColor: bg,
+                  width: '36px',
+                  height: '36px',
+                  border: 'none',
+                  borderRadius: '4px',
+                  color: '#fff',
+                }}
+                aria-label={label}
+              >
+                <i className={`bi ${icon}`} style={{ fontSize: '18px' }}></i>
+              </button>
+            ))}
+          </div>
 
           {/* Audio Player */}
           <div className="mb-4">
@@ -170,12 +186,9 @@ const article = articles.find((item) => item.slug === slug);
             </strong>
           </p>
 
-          {/* Article Body Placeholder */}
+          {/* Article Body */}
           <div className="article-text text-black">
-           
             <p>{article.description}</p>
-            
-      
           </div>
 
           {/* Comment & Newsletter */}
@@ -185,7 +198,6 @@ const article = articles.find((item) => item.slug === slug);
             </div>
             <h5 className="fw-bold text-black">Be the first to know</h5>
             <p className="text-muted mb-3">Get local news delivered to your inbox!</p>
-            
 
             <form className="d-flex justify-content-center align-items-center gap-2 flex-wrap mb-2">
               <input
@@ -202,10 +214,7 @@ const article = articles.find((item) => item.slug === slug);
           </div>
         </div>
       </div>
-
-     
-      </div>
-    
+    </div>
   );
 };
 

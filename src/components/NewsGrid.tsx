@@ -61,7 +61,7 @@ const NewsGrid = ({ category }: NewsGridProps) => {
   })
 );
 
-console.log("featured articlesss:",featuredArticle);
+
 
 
 
@@ -101,10 +101,11 @@ console.log("featured articlesss:",featuredArticle);
             className="mt-3 fw-bold"
             style={{
               fontSize: "2.5rem",
-              fontFamily: "Times New Roman",
+              fontFamily: "Times New Roman, Times, serif",
               color: isFeaturedHovered ? "#b0b0b0" : "#ffffff",
             }}
           >
+           
             {featuredArticle.title}
           </h2>
         </div>

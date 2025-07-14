@@ -44,11 +44,15 @@ const Header = () => {
         </div>
 
         <div className="d-flex px-3 mt-2 gap-4 flex-wrap logo-anime">
-          <Link href="/" className="flip-container hhh" style={{ textDecoration: "none" }}>
+          <Link
+            href="/"
+            className="flip-container hhh"
+            style={{ textDecoration: "none" }}
+          >
             <div className={`flipper vertical ${flipped ? "flipped" : ""}`}>
               <div className="front">
                 <Image
-                  src="/images/st louise.webp"
+                  src="/images/"
                   alt="St. Louis Post-Dispatch"
                   width={800}
                   height={200}
@@ -62,9 +66,18 @@ const Header = () => {
             </div>
           </Link>
 
-          <div className="d-none d-lg-flex align-items-center" style={{ marginTop: "10px" }}>
+          <div
+            className="d-none d-lg-flex align-items-center"
+            style={{ marginTop: "10px" }}
+          >
             <i className="bi bi-search me-2"></i>
-            <div style={{ position: "relative", maxWidth: "280px", minWidth: "300px" }}>
+            <div
+              style={{
+                position: "relative",
+                maxWidth: "280px",
+                minWidth: "300px",
+              }}
+            >
               <input
                 type="text"
                 placeholder="Search St. Louis Post-Dispatch"
@@ -98,7 +111,9 @@ const Header = () => {
               lineHeight: 1.1,
             }}
           >
-            <span style={{ fontSize: ".8rem", fontWeight: "550" }}>Subscribe</span>
+            <span style={{ fontSize: ".8rem", fontWeight: "550" }}>
+              Subscribe
+            </span>
             <span
               style={{
                 fontSize: "0.85rem",
@@ -112,7 +127,10 @@ const Header = () => {
       </div>
 
       {/* Mobile Header Navigation (Logo + Button) */}
-      <div className="bg-black d-lg-none" style={{ borderBottom: "0.3px solid #444" }}>
+      <div
+        className="bg-black d-lg-none"
+        style={{ borderBottom: "0.3px solid #444" }}
+      >
         <div className="container-fluid align-items-center justify-content-between px-3 py-2 header-none">
           <i
             className="bi bi-list fs-4 text-light d-lg-none"
@@ -123,7 +141,7 @@ const Header = () => {
           <div className="flex-grow-1 d-flex justify-content-center">
             <Link href="/" className="d-flex justify-content-center">
               <Image
-                src="/images/st louise.webp"
+                src="/images/"
                 alt="St. Louis Post-Dispatch"
                 width={180}
                 height={60}
@@ -186,7 +204,10 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
-            <div className="d-flex align-items-center gap-1" style={{ fontSize: "12px" }}>
+            <div
+              className="d-flex align-items-center gap-1"
+              style={{ fontSize: "12px" }}
+            >
               <i className="bi bi-moon"></i>
               <span style={{ fontSize: "14px" }}>
                 74° <span className="text-white">Clear</span>
@@ -210,7 +231,10 @@ const Header = () => {
 
             <div className="vr bg-light" style={{ height: "30px" }} />
 
-            <div className="d-flex align-items-center gap-1" style={{ cursor: "pointer" }}>
+            <div
+              className="d-flex align-items-center gap-1"
+              style={{ cursor: "pointer" }}
+            >
               <i className="bi bi-person fs-4 text-light"></i>
               <span className="d-none d-md-inline" style={{ fontSize: "1rem" }}>
                 Log In

@@ -2,14 +2,6 @@
   "category": "politics",
   
   "featured": {
-    "title":"DOJ Overreach? Wanda Vázquez Case Crumbles, Leaving Feds Empty-Handed",
-        "shortdescription":"The U.S. Department of Justice’s high-stakes corruption case against former Puerto RicoGovernor Wanda Vázquez Garced has crumbled completely, prompting discussions of possiblefederal overreach in the investigation",
-        "description":"In the ongoing trade tensions between the United States and the European Union, French leaders are adopting a more assertive tone. France’s Economy Minister Bruno Le Maire called on Europe to defend its interests as forcefully as the U.S. does, criticizing the Inflation Reduction Act (IRA) for drawing investment away from European industries. The IRA, which heavily subsidizes American-made green technologies, is seen in Paris as a strategic threat to Europe’s industrial base. France is advocating for a 'Buy European Act' and urging the European Commission to respond with its own industrial policy. The call reflects a broader push for European strategic autonomy amid global economic rivalry, particularly with the U.S. and China. Despite internal EU divisions, France, led by President Macron, is pushing for a doctrine focused on industrial resilience and economic sovereignty. Critics warn of rising protectionism, but French leaders argue that Europe must stop playing by outdated rules in a world of economic power plays. The message from Paris: cooperation without fairness is no longer enough — and Europe must be ready to push back.",
-        "img":"/images/wanda vázquez.webp",
-        "slug": "doj-overreach-wanda-vazquez-case-crumbles-leaving-feds-empty-handed"
-    },
-  "businessNews": [
-     {
        
         "title":"Trade War Escalates: Now Is the Time to Embrace a Power Struggle with Washington",
         "shortdescription":"In the ongoing trade tensions between the United States and the European Union, French leaders are adopting a more assertive tone.",
@@ -18,6 +10,15 @@
         "slug":"trade-war-france-us-embrace-power-struggle-washington"
 
     },
+  "businessNews": [
+    {
+    "title":"DOJ Overreach? Wanda Vázquez Case Crumbles, Leaving Feds Empty-Handed",
+        "shortdescription":"The U.S. Department of Justice’s high-stakes corruption case against former Puerto RicoGovernor Wanda Vázquez Garced has crumbled completely, prompting discussions of possiblefederal overreach in the investigation",
+        "description":"In the ongoing trade tensions between the United States and the European Union, French leaders are adopting a more assertive tone. France’s Economy Minister Bruno Le Maire called on Europe to defend its interests as forcefully as the U.S. does, criticizing the Inflation Reduction Act (IRA) for drawing investment away from European industries. The IRA, which heavily subsidizes American-made green technologies, is seen in Paris as a strategic threat to Europe’s industrial base. France is advocating for a 'Buy European Act' and urging the European Commission to respond with its own industrial policy. The call reflects a broader push for European strategic autonomy amid global economic rivalry, particularly with the U.S. and China. Despite internal EU divisions, France, led by President Macron, is pushing for a doctrine focused on industrial resilience and economic sovereignty. Critics warn of rising protectionism, but French leaders argue that Europe must stop playing by outdated rules in a world of economic power plays. The message from Paris: cooperation without fairness is no longer enough — and Europe must be ready to push back.",
+        "img":"/images/wandavázquez.webp",
+        "slug": "doj-overreach-wanda-vazquez-case-crumbles-leaving-feds-empty-handed"
+    },
+     
         {
       
         "title":"Drones, Military Aircraft, and Airbus Orders: A Very 'Khaki' Outcome for the 2025 Paris Air Show",

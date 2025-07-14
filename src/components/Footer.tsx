@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Column 1: Logo + Social + Links */}
           <div className="col-md-4 mb-4">
             <Image
-              src="/images/st louise.webp"
+              src="/images/st-louise.webp"
               alt="St. Louis Post-Dispatch"
               width={230}
               height={60} // Approximate height (auto scaling will adjust this)
