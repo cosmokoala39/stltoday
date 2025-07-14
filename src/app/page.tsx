@@ -11,10 +11,10 @@ import React from 'react'
 function page() {
   return (
     <div>
-      <NewsGrid/>
-      <RecommendedSection/>
-      <LatestNews/>
-      <EditorsPick/>
+      <NewsGrid category="business"/>
+      <RecommendedSection category='health'/>
+      <LatestNews category='politics'/>
+      <EditorsPick category='technology'/>
       <News/>
     </div>
   )

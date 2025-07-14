@@ -2,15 +2,84 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image"; // ✅ Added Next.js Image
+import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HealthData from "@/data/categories/health.json";
 
-const RecommendedSection = () => {
-  const articles = HealthData.businessNews.map((item) => ({
+// Import all category data
+import businessData from "@/data/categories/business.json";
+import SportsData from "@/data/categories/sports.json";
+import HealthaData from "@/data/categories/health.json";
+import Technology from "@/data/categories/technology.json";
+import PoliticsData from "@/data/categories/politics.json";
+import Science from "@/data/categories/science.json";
+
+interface CategoryData {
+  category: string;
+  featured?: any;
+  businessNews?: any[];
+  articles?: any[];
+  newsItems?: any[];
+  items?: any[];
+  middleSectionNews?: any[];
+  shopping?: any[];
+}
+
+// Helper function to get data by category
+function getDataByCategory(category: string): CategoryData | null {
+  switch (category) {
+    case 'business': return businessData;
+    case 'sports': return SportsData;
+    case 'health': return HealthaData;
+    case 'technology': return Technology;
+    case 'politics': return PoliticsData;
+    case 'science': return Science;
+    default: return null;
+  }
+}
+
+// Helper function to extract articles from category data
+function extractArticles(data: CategoryData): any[] {
+  const possibleKeys = ['articles', 'businessNews', 'newsItems', 'items', 'middleSectionNews', 'shopping'];
+  let articles: any[] = [];
+
+  possibleKeys.forEach((key) => {
+    const value = (data as any)[key];
+    if (Array.isArray(value)) {
+      articles = articles.concat(value);
+    }
+  });
+
+  return articles.slice(0, 4); // Limit to 4 articles
+}
+
+// Category display names
+const categoryDisplayNames: { [key: string]: string } = {
+  'business': 'Business',
+  'sports': 'Sports',
+  'health': 'Health',
+  'technology': 'Technology',
+  'politics': 'Politics',
+  'science': 'Science'
+};
+
+interface RecommendedSectionProps {
+  category?: string;
+}
+
+const RecommendedSection: React.FC<RecommendedSectionProps> = ({ category = 'health' }) => {
+  console.log("categoryyyyyyyyyyyyyyyyyyyy:",category)
+  const categoryData = getDataByCategory(category);
+  
+  if (!categoryData) {
+    return <div>Category not found</div>;
+  }
+
+  const articles = extractArticles(categoryData).map((item) => ({
     ...item,
-    category: HealthData.category,
+    category: category,
   }));
+
+  const displayName = categoryDisplayNames[category] || category;
 
   return (
     <div className="container-fluid bg-white p-0 m-0">
@@ -40,7 +109,7 @@ const RecommendedSection = () => {
               fontFamily: "Times New Roman, Times, serif",
             }}
           >
-            Shopping
+            {displayName}
           </span>
 
           <span
@@ -50,7 +119,7 @@ const RecommendedSection = () => {
               fontFamily: "Times New Roman, Times, serif",
             }}
           >
-            Can you outrun rising car insurance prices?
+            {articles[0]?.title || "Latest updates from " + displayName}
           </span>
         </div>
 

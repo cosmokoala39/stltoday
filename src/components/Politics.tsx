@@ -4,13 +4,24 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
-import businessData from "@/data/categories/politics.json";
 
-interface BusinessNewsItem {
-  img: string;
-  title: string;
-  slug: string;
-  // add other fields if present in JSON to improve type safety
+// Import all category data
+import businessData from "@/data/categories/business.json";
+import SportsData from "@/data/categories/sports.json";
+import HealthaData from "@/data/categories/health.json";
+import Technology from "@/data/categories/technology.json";
+import PoliticsData from "@/data/categories/politics.json";
+import Science from "@/data/categories/science.json";
+
+interface CategoryData {
+  category: string;
+  featured?: any;
+  businessNews?: any[];
+  articles?: any[];
+  newsItems?: any[];
+  items?: any[];
+  middleSectionNews?: any[];
+  shopping?: any[];
 }
 
 interface NewsItem {
@@ -20,17 +31,66 @@ interface NewsItem {
   category: string;
 }
 
-// Type-cast businessData.businessNews to BusinessNewsItem[]
-const news: NewsItem[] = (businessData.businessNews as BusinessNewsItem[]).map(
-  (item) => ({
+// Helper function to get data by category
+function getDataByCategory(category: string): CategoryData | null {
+  switch (category) {
+    case 'business': return businessData;
+    case 'sports': return SportsData;
+    case 'podcasts': return HealthaData;
+    case 'puzzle': return Technology;
+    case 'edition': return PoliticsData;
+    case 'lifestyles': return Science;
+    default: return null;
+  }
+}
+
+// Helper function to extract articles from category data
+function extractArticles(data: CategoryData): any[] {
+  const possibleKeys = ['articles', 'businessNews', 'newsItems', 'items', 'middleSectionNews', 'shopping'];
+  let articles: any[] = [];
+
+  possibleKeys.forEach((key) => {
+    const value = (data as any)[key];
+    if (Array.isArray(value)) {
+      articles = articles.concat(value);
+    }
+  });
+
+  return articles.slice(0, 4); // Limit to 4 articles
+}
+
+// Category display names
+const categoryDisplayNames: { [key: string]: string } = {
+  'business': 'Business',
+  'sports': 'Sports',
+  'podcasts': 'Health',
+  'puzzle': 'Technology',
+  'edition': 'Politics',
+  'lifestyles': 'Science'
+};
+
+interface LatestNewsProps {
+  category?: string;
+}
+
+const LatestNews: React.FC<LatestNewsProps> = ({ category = 'edition' }) => {
+  const categoryData = getDataByCategory(category);
+  
+  if (!categoryData) {
+    return <div>Category not found</div>;
+  }
+
+  const articles = extractArticles(categoryData);
+  const displayName = categoryDisplayNames[category] || category;
+
+  // Transform articles to NewsItem format
+  const news: NewsItem[] = articles.map((item) => ({
     image: item.img,
     title: item.title,
     slug: item.slug,
-    category: businessData.category,
-  })
-);
+    category: category,
+  }));
 
-const LatestNews = () => {
   return (
     <div className="container-fluid py-5" style={{ backgroundColor: "#000" }}>
       <div className="mx-auto px-3" style={{ maxWidth: "1500px" }}>
@@ -44,7 +104,7 @@ const LatestNews = () => {
           >
             
           </span>
-          <em style={{ fontWeight: 600 }}>Politics</em>
+          <em style={{ fontWeight: 600 }}>{displayName}</em>
         </h6>
 
         {/* 🖥️ Desktop view */}

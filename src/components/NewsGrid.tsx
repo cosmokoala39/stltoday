@@ -5,6 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 import Image from "next/image";
 import businessData from "@/data/categories/business.json";
+import sportsData from "@/data/categories/sports.json";
+import healthData from "@/data/categories/health.json";
+import technologyData from "@/data/categories/technology.json";
+import politicsData from "@/data/categories/politics.json";
+import scienceData from "@/data/categories/science.json";
+
 
 interface Article {
   title: string;
@@ -12,20 +18,52 @@ interface Article {
   slug: string;
   category: string;
 }
+interface NewsGridProps {
+  category: string;
+}
 
-const NewsGrid = () => {
+const getDataByCategory = (category: string) => {
+  switch (category) {
+    case "business":
+      return businessData;
+    case "sports":
+      return sportsData;
+    case "health":
+      return healthData;
+    case "technology":
+      return technologyData;
+    case "politics":
+      return politicsData;
+    case "science":
+      return scienceData;
+    default:
+      return null;
+  }
+};
+
+const NewsGrid = ({ category }: NewsGridProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isFeaturedHovered, setIsFeaturedHovered] = useState(false);
 
-  const featuredArticle: Article = {
-    ...businessData.featured,
-    category: businessData.category,
-  };
+  const data = getDataByCategory(category);
+  if (!data) return null;
 
-  const sideArticles: Article[] = businessData.businessNews.map((article) => ({
+  const featuredArticle: Article = {
+  ...(data.featured as Omit<Article, "category">),
+  category: data.category as string,
+};
+
+
+  const sideArticles: Article[] = (data.businessNews as Omit<Article, "category">[]).map(
+  (article) => ({
     ...article,
-    category: businessData.category,
-  }));
+    category: data.category as string,
+  })
+);
+
+console.log("featured articlesss:",featuredArticle);
+
+
 
   return (
     <div

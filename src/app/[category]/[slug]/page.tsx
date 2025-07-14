@@ -67,10 +67,10 @@ function getDataByCategory(category: string): Record<string, unknown> | null {
   switch (category) {
     case 'business': return businessData;
     case 'sports': return SportsData;
-    case 'podcasts': return HealthaData;
-    case 'puzzle': return Technology;
-    case 'edition': return PoliticsData;
-    case 'lifestyles': return Science;
+    case 'health': return HealthaData;
+    case 'technology': return Technology;
+    case 'politicsData': return PoliticsData;
+    case 'science': return Science;
     default: return null;
   }
 }
@@ -113,14 +113,23 @@ const article = articles.find((item) => item.slug === slug);
       <div className="bg-white" style={{ paddingTop: '40px' }}>
         <div className="container p-4 bg-white dd" >
 
-          {/* Share Buttons */}
-          <div className="d-flex gap-2 mb-4">
-            {['facebook', 'twitter-x', 'bug-fill', 'envelope-fill', 'printer-fill', 'share-fill', 'bookmark-fill'].map(icon => (
-              <button key={icon} className="btn btn-sm btn-outline-dark">
-                <i className={`bi bi-${icon}`}></i>
-              </button>
-            ))}
-          </div>
+        {/* Share Buttons with custom icons */}
+<div className="d-flex gap-2 mb-4">
+  {[
+    { alt: 'Facebook', src: '/icons/facebook.png' },
+    { alt: 'Twitter X', src: '/icons/x.png' },
+    { alt: 'Butterfly', src: '/icons/butterfly.png' },
+    { alt: 'Envelope', src: '/icons/envelope.png' },
+    { alt: 'Printer', src: '/icons/printer.png' },
+    { alt: 'Share', src: '/icons/share.png' },
+    { alt: 'Bookmark', src: '/icons/bookmark.png' }
+  ].map(({ alt, src }) => (
+    <button key={alt} className="btn btn-sm btn-outline-dark p-1">
+      <img src={src} alt={alt} style={{ width: 20, height: 20 }} />
+    </button>
+  ))}
+</div>
+
 
           {/* Audio Player */}
           <div className="mb-4">
