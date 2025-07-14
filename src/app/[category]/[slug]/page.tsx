@@ -69,7 +69,7 @@ function getDataByCategory(category: string): Record<string, unknown> | null {
     case 'sports': return SportsData;
     case 'health': return HealthaData;
     case 'technology': return Technology;
-    case 'politicsData': return PoliticsData;
+    case 'politics': return PoliticsData;
     case 'science': return Science;
     default: return null;
   }

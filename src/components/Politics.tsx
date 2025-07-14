@@ -36,10 +36,10 @@ function getDataByCategory(category: string): CategoryData | null {
   switch (category) {
     case 'business': return businessData;
     case 'sports': return SportsData;
-    case 'podcasts': return HealthaData;
-    case 'puzzle': return Technology;
-    case 'edition': return PoliticsData;
-    case 'lifestyles': return Science;
+    case 'health': return HealthaData;
+    case 'technology': return Technology;
+    case 'politics': return PoliticsData;
+    case 'science': return Science;
     default: return null;
   }
 }
@@ -63,17 +63,17 @@ function extractArticles(data: CategoryData): any[] {
 const categoryDisplayNames: { [key: string]: string } = {
   'business': 'Business',
   'sports': 'Sports',
-  'podcasts': 'Health',
-  'puzzle': 'Technology',
-  'edition': 'Politics',
-  'lifestyles': 'Science'
+  'health': 'Health',
+  'technology': 'Technology',
+  'politics': 'Politics',
+  'science': 'Science'
 };
 
 interface LatestNewsProps {
   category?: string;
 }
 
-const LatestNews: React.FC<LatestNewsProps> = ({ category = 'edition' }) => {
+const LatestNews: React.FC<LatestNewsProps> = ({ category = 'politics' }) => {
   const categoryData = getDataByCategory(category);
   
   if (!categoryData) {
