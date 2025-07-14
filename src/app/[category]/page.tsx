@@ -106,7 +106,8 @@ export default async function CategoryPage({ params }: PageProps) {
                     className="object-fit-cover"
                   />
                 </div>
-                <h4 className="fw-bold">{featured.title}</h4>
+                <h4 className="fw-bold" style={{fontFamily: "Times New Roman, Times, serif", fontWeight: 700,
+                        fontSize: "2.9rem"}}>{featured.title}</h4>
                 <p className="text-muted">{featured.author}</p>
               </Link>
             </div>
@@ -128,7 +129,8 @@ export default async function CategoryPage({ params }: PageProps) {
                           className="w-100 object-fit-cover rounded mb-2"
                         />
                       </div>
-                      <h6 className="fw-bold">{item.title}</h6>
+                      <h6 className="fw-bold text-white" style={{fontFamily: "Times New Roman, Times, serif",fontWeight: 700,
+                        fontSize: "1.3rem",}}>{item.title}</h6>
                       <p className="text-muted">{item.author}</p>
                     </Link>
                   </div>

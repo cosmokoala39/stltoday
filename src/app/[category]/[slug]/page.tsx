@@ -80,10 +80,12 @@ function getDataByCategory(category: string): Record<string, unknown> | null {
 const ShoppingDetailPage = async ({ params }: PageProps) => {
   const data = getDataByCategory((await params).category);
   if (!data) return notFound();
-  console.log("dataa:",data);
+  
 
   const articles = extractArticles(data);
-  const article = articles.find(async (item) => item.slug === (await params).slug);
+ const { category, slug } = await params;
+const article = articles.find((item) => item.slug === slug);
+  console.log("article:",article)
 
   if (!article) return notFound();
 
@@ -122,8 +124,8 @@ const ShoppingDetailPage = async ({ params }: PageProps) => {
 
           {/* Audio Player */}
           <div className="mb-4">
-            <div className="fw-medium small">🎧 Playing article</div>
-            <div className="small text-black mb-2">Powered by <strong>Trinity Audio</strong></div>
+            <div className="fw-medium small text-black ">🎧 Playing article</div>
+            <div className="small text-black mb-2">Powered by Trinity Audio</div>
             <div className="d-flex align-items-center gap-2 px-3 py-2 rounded bg-white">
               <button className="btn btn-outline-dark btn-sm rounded-circle px-2 py-1">
                 <i className="bi bi-play-fill"></i>
