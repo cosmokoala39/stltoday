@@ -1,32 +1,25 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
+import ShoppingData from "@/data/categories/shoping.json";
 
 interface Article {
   img: string;
   title: string;
+  slug: string;
+  category: string;
 }
 
-export const articles: Article[] = [
-  {
-    img: 'https://example.com/image1.jpg',
-    title: 'Credit Card Debt Relief Options',
-  },
-  {
-    img: 'https://example.com/image2.jpg',
-    title: 'Top 5 Debt Relief Programs of 2025',
-  },
-  {
-    img: 'https://example.com/image3.jpg',
-    title: 'Best Debt Relief Companies Reviewed',
-  },
-  {
-    img: 'https://example.com/image4.jpg',
-    title: 'Is Debt Relief Right for You?',
-  },
-];
+// ✅ Prepare shopping articles from JSON
+const articles: Article[] = ShoppingData.shopping.map((item) => ({
+  ...item,
+  category: ShoppingData.category,
+}));
 
 const Shopping = () => {
   return (
@@ -36,8 +29,8 @@ const Shopping = () => {
         <h5
           className="mb-4 fw-bold ms-2 text-black ps-2"
           style={{
-            borderLeft: '6px solid #0d6efd',
-            fontFamily: 'Times New Roman, Times, serif',
+            borderLeft: "6px solid #0d6efd",
+            fontFamily: "Times New Roman, Times, serif",
           }}
         >
           Shopping
@@ -49,36 +42,32 @@ const Shopping = () => {
             {articles.map((article, index) => (
               <Link
                 key={index}
-                href={`/article/${index}`}
+                href={`/${article.category}/${article.slug}`}
                 className="text-decoration-none"
               >
                 <div
                   className="card border-0"
                   style={{
-                    minWidth: '250px',
-                    maxWidth: '250px',
-                    fontFamily: 'Times New Roman, Times, serif',
+                    minWidth: 250,
+                    maxWidth: 250,
+                    fontFamily: "Times New Roman, Times, serif",
                   }}
                 >
-                  <div style={{ height: '180px', position: 'relative' }}>
-                    <img
+                  <div style={{ height: 180, position: "relative" }}>
+                    <Image
                       src={article.img}
                       alt={article.title}
-                      className="card-img-top"
-                      style={{
-                        height: '100%',
-                        width: '100%',
-                        objectFit: 'cover',
-                        borderRadius: '8px',
-                      }}
+                      fill
+                      style={{ objectFit: "cover"}}
+                      sizes="250px"
                     />
                   </div>
                   <div className="card-body px-2 pt-3">
                     <p
                       className="card-text text-dark mb-0"
                       style={{
-                        fontSize: '1.1rem',
-                        lineHeight: '1.3rem',
+                        fontSize: "1.1rem",
+                        lineHeight: "1.3rem",
                         fontWeight: 1000,
                       }}
                     >
@@ -97,35 +86,31 @@ const Shopping = () => {
             {articles.map((article, index) => (
               <div key={index} className="col-12 col-sm-6 col-md-3">
                 <Link
-                  href={`/article/${index}`}
+                  href={`/${article.category}/${article.slug}`}
                   className="text-decoration-none"
                 >
                   <div
                     className="card border-0 h-100"
                     style={{
-                      fontFamily: 'Times New Roman, Times, serif',
-                      fontSize: '0.9rem',
+                      fontFamily: "Times New Roman, Times, serif",
+                      fontSize: "0.9rem",
                     }}
                   >
-                    <div style={{ height: '220px', position: 'relative' }}>
-                      <img
+                    <div style={{ height: 220, position: "relative" }}>
+                      <Image
                         src={article.img}
                         alt={article.title}
-                        className="card-img-top"
-                        style={{
-                          height: '100%',
-                          width: '100%',
-                          objectFit: 'cover',
-                          borderRadius: '8px',
-                        }}
+                        fill
+                        style={{ objectFit: "cover", borderRadius: "8px" }}
+                        sizes="(min-width: 768px) 25vw, 100vw"
                       />
                     </div>
                     <div className="card-body px-2 pt-3">
                       <p
                         className="card-text text-dark mb-0"
                         style={{
-                          fontSize: '1.2rem',
-                          lineHeight: '1.3rem',
+                          fontSize: "1.2rem",
+                          lineHeight: "1.3rem",
                           fontWeight: 1000,
                         }}
                       >

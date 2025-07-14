@@ -1,33 +1,15 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
+import businessData from "@/data/categories/business.json";
 
-interface Article {
-  img: string;
-  title: string;
-  description?: string;
-}
-
-const articles: Article[] = [
-  {
-    img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/0/6c/06c15086-bbfd-58f2-99c7-8918d37a339c/68668199bbb43.preview.jpg?crop=1763%2C992%2C0%2C91&resize=540%2C304&order=crop%2Cresize",
-    title: "Why Some Americans Are Turning to Financing for Basic Medical Needs",
-  },
-  {
-    img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/b/01/b0184c28-1323-5595-a9bc-670df9f8c296/6863fe9da56ad.preview.png?crop=1440%2C810%2C0%2C315&resize=540%2C304&order=crop%2Cresize",
-    title:
-      "Amazon’s Top-Selling Baby Nasal Aspirator: A Prime Day Deal Parents Shouldn’t Miss",
-  },
-  {
-    img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/1/03/103669f3-013c-50fe-9ba3-35eca2b722ad/6863e8b0b2d42.preview.png?crop=1536%2C864%2C0%2C80&resize=540%2C304&order=crop%2Cresize",
-    title: "3 Best Sites to Buy YouTube Views Safely in 2025",
-  },
-  {
-    img: "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/0/8d/08dbf6d3-dfbf-52bb-8f02-0784795db1df/686295213f21e.preview.jpg?resize=540%2C304",
-    title: "Understanding Market Factors That Drive the Value of Cryptocurrency",
-  },
-];
+const articles = businessData.businessNews.map((item) => ({
+  ...item,
+  category: businessData.category,
+}));
 
 const Partner = () => {
   return (
@@ -44,72 +26,29 @@ const Partner = () => {
           Partner
         </h5>
 
-        {/* Mobile: Horizontal Scroll */}
+        {/* Mobile Horizontal Scroll */}
         <div className="d-block d-md-none overflow-auto">
           <div className="d-flex flex-nowrap gap-3">
             {articles.map((article, index) => (
-              <div
+              <Link
                 key={index}
-                className="card border-0"
-                style={{
-                  minWidth: "250px",
-                  maxWidth: "250px",
-                  fontFamily: "Times New Roman, Times, serif",
-                }}
+                href={`/${article.category}/${article.slug}`}
+                className="text-decoration-none"
               >
-                <div style={{ position: "relative", height: "180px" }}>
-                  <img
-                    src={article.img}
-                    className="card-img-top"
-                    alt={article.title}
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                    }}
-                  />
-                </div>
-                <div className="card-body px-2 pt-3">
-                  <p
-                    className="card-text text-dark mb-0"
-                    style={{
-                      fontSize: "1.1rem",
-                      lineHeight: "1.3rem",
-                      fontWeight: 1000,
-                    }}
-                  >
-                    {article.title}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop: 4-column Grid */}
-        <div className="d-none d-md-block">
-          <div className="row gx-4 gy-4">
-            {articles.map((article, index) => (
-              <div key={index} className="col-12 col-sm-6 col-md-3">
                 <div
-                  className="card border-0 h-100"
+                  className="card border-0"
                   style={{
+                    minWidth: "280px",
                     fontFamily: "Times New Roman, Times, serif",
-                    fontSize: "0.9rem",
                   }}
                 >
-                  <div style={{ position: "relative", height: "220px" }}>
-                    <img
+                  <div style={{ position: "relative", height: 200 }}>
+                    <Image
                       src={article.img}
-                      className="card-img-top"
                       alt={article.title}
-                      style={{
-                        height: "100%",
-                        width: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                      }}
+                      fill
+                      style={{ objectFit: "cover", borderRadius: "8px" }}
+                      sizes="280px"
                     />
                   </div>
                   <div className="card-body px-2 pt-3">
@@ -125,9 +64,50 @@ const Partner = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+        </div>
+
+        {/* Desktop Grid View */}
+        <div className="row gx-4 gy-4 d-none d-md-flex">
+          {articles.map((article, index) => (
+            <div key={index} className="col-md-3">
+              <Link
+                href={`/${article.category}/${article.slug}`}
+                className="text-decoration-none"
+              >
+                <div
+                  className="card border-0 h-100"
+                  style={{
+                    fontFamily: "Times New Roman, Times, serif",
+                  }}
+                >
+                  <div style={{ position: "relative", height: 220 }}>
+                    <Image
+                      src={article.img}
+                      alt={article.title}
+                      fill
+                      style={{ objectFit: "cover", borderRadius: "8px" }}
+                      sizes="(min-width: 768px) 25vw, 100vw"
+                    />
+                  </div>
+                  <div className="card-body px-2 pt-3">
+                    <p
+                      className="card-text mb-0 text-dark"
+                      style={{
+                        fontSize: "1.2rem",
+                        lineHeight: "1.3rem",
+                        fontWeight: 1000,
+                      }}
+                    >
+                      {article.title}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>

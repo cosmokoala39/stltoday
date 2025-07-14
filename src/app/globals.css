@@ -73,6 +73,9 @@ position: relative;
 }
 
 
+.gg{
+   margin-left: 200px
+}
 
 
 
@@ -99,6 +102,10 @@ position: relative;
   left: 0;
   width: 100%;
   height: 100%;
+}
+.dd{
+  margin-top:-200px;
+  width:1000px
 }
 
 .front {
@@ -143,6 +150,9 @@ position: relative;
     flex-wrap: wrap;
     display: flex;
 }
+.hhh{
+  width:320px;margin-top:12px
+}
 @media (max-width: 350px) {
   .subscribe-none{
     display: none;
@@ -154,6 +164,17 @@ position: relative;
 }
 .header-display{
  display: block;
+}
+.hhh{
+  width:220px;margin-top:12px
+}
+.gg{
+   margin-left: 0px;
+}
+.dd{
+ 
+  margin-top: -200px;
+  width:100%
 }
 }
 
@@ -203,3 +224,16 @@ position: relative;
 
 
 
+
+        .hero-title {
+          font-family: 'Georgia', serif;
+          font-size: 2.7rem;
+          font-weight: bold;
+          line-height: 1.2;
+        }
+        .article-text {
+          font-family: 'Georgia', serif;
+          font-size: 1.05rem;
+          line-height: 1.75;
+        }
+      

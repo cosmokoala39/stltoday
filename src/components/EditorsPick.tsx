@@ -1,10 +1,14 @@
-"use client";
+'use client';
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
+import businessData from "@/data/categories/business.json";
 
 const EditorsPick = () => {
+  const editorData = businessData.featured; // You can switch this to a dedicated field if needed
+
   return (
     <div
       style={{
@@ -37,14 +41,16 @@ const EditorsPick = () => {
             {/* Left: Image */}
             <div className="col-12 col-md-6 mb-4 mb-md-0">
               <div style={{ position: "relative", width: "100%", height: "350px" }}>
-                <Image
-                  src="https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/8/14/8148675b-1422-5be4-838a-2c3557e94093/683da8d4a03ee.preview.jpg?crop=1830%2C1029%2C0%2C51&resize=400%2C225&order=crop%2Cresize"
-                  alt="Editor's Pick"
-                  fill
-                  style={{ objectFit: "cover", borderRadius: "10px" }}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
+                <Link href={`/business/${editorData.slug}`}>
+                  <Image
+                    src={editorData.img}
+                    alt={editorData.title}
+                    fill
+                    style={{ objectFit: "cover", borderRadius: "10px" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </Link>
               </div>
             </div>
 
@@ -58,14 +64,10 @@ const EditorsPick = () => {
                   color: "#000",
                 }}
               >
-                Hours, fees, features: Find a public swimming pool or water park
-                in the St. Louis area
+                {editorData.title}
               </h2>
 
-              <p style={{ fontSize: "1.05rem", color: "#333" }}>
-                Our guide to public St. Louis-area pools and water parks is
-                updated for 2025 with all the info on attractions, hours and more.
-              </p>
+              
 
               <ul
                 className="mb-0 mt-3"

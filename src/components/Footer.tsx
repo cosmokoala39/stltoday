@@ -1,7 +1,8 @@
 'use client';
 
 import React from "react";
-import Link from "next/link"; // ✅ Import Link from next/link
+import Link from "next/link";
+import Image from "next/image"; // ✅ Import Next.js Image component
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Footer = () => {
@@ -12,10 +13,13 @@ const Footer = () => {
 
           {/* Column 1: Logo + Social + Links */}
           <div className="col-md-4 mb-4">
-            <img
+            <Image
               src="/images/st louise.webp"
               alt="St. Louis Post-Dispatch"
+              width={230}
+              height={60} // Approximate height (auto scaling will adjust this)
               style={{ width: "230px", height: "auto" }}
+              priority
             />
 
             {/* Social Icons */}
