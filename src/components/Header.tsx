@@ -47,7 +47,7 @@ const Header = () => {
 
         <div className="d-flex px-3 mt-2 gap-4 flex-wrap logo-anime">
           <Link
-            href="/images/logo-headerr.webp"
+            href="/"
             className="flip-container hhh"
             style={{ textDecoration: "none" }}
           >
@@ -192,7 +192,7 @@ const Header = () => {
         )}
       </div>
 
-      {/* Desktop Nav */}
+      {/* Desktop Nav */}kmss,x
       <div
         className="bg-black pt-2 pb-1 sticky-header d-none d-lg-block"
         style={{ borderBottom: "0.3px solid #444" }}
